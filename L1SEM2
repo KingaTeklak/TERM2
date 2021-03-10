@@ -1,0 +1,166 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "L1_09.03",
+      "provenance": [],
+      "authorship_tag": "ABX9TyMA69k7EHG13Guxfezm9p0l",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/KingaTeklak/homework/blob/main/L1SEM2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "b262jodrQpJ4"
+      },
+      "source": [
+        "# Lista nr **1**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "f3OnecuXQTd1"
+      },
+      "source": [
+        "import random\r\n",
+        "import copy"
+      ],
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eD62GyxsR2eY"
+      },
+      "source": [
+        "konstruktor przyjmujący rozmiar wektora jako argument (domyślnie\r\n",
+        "3) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Fs6bj1oTQ5BL"
+      },
+      "source": [
+        "class Vector:\r\n",
+        "  def __init__(self, size = 3):\r\n",
+        "    self.size = size\r\n",
+        "    self.vector = []\r\n",
+        "    for i in range(size):\r\n",
+        "        self.vector.append(0)\r\n",
+        "\r\n",
+        "  def vector_generate(self):\r\n",
+        "    \"\"\"metoda zwraca wektor o wymiarze size\"\"\"\r\n",
+        "    self.vector = []\r\n",
+        "    for i in range(self.size):\r\n",
+        "      self.vector.append(random.randint(0,100))\r\n",
+        "  \r\n",
+        "\r\n",
+        "  def vector_from_list(self, lst):\r\n",
+        "    \"\"\"wczytuje elementy wektora z listy podanej jako argument\"\"\"\r\n",
+        "    self.size = len(lst)\r\n",
+        "    self.vector = copy.deepcopy(lst)\r\n",
+        "    \r\n",
+        "\r\n",
+        "\r\n",
+        "  def __add__(self, other_vector):\r\n",
+        "    \"\"\"metoda dodaje do siebie wektory równych wymiarów\"\"\"\r\n",
+        "    \r\n",
+        "    if (self.size != other_vector.size):\r\n",
+        "      \r\n",
+        "      return ValueError\r\n",
+        "    else:\r\n",
+        "      new_vector = Vector(self.size)\r\n",
+        "      print(self.vector, other_vector.vector)\r\n",
+        "      for i in range(self.size):\r\n",
+        "        new_vector.vector[i] = self.vector[i]+other_vector.vector[i]\r\n",
+        "        print(new_vector.vector)\r\n",
+        "      return new_vector\r\n",
+        "\r\n",
+        "  def scalar_multiplication(self, scalar):\r\n",
+        "    \"\"\"metoda mnoży wektor przez skalar\"\"\"\r\n",
+        "    new_vector = copy.deepcopy(vector_1.vector_generate())\r\n",
+        "    print(new_vector)\r\n",
+        "    for i in range(self.size):\r\n",
+        "      new_vector[i] *= scalar\r\n",
+        "    return new_vector\r\n",
+        "\r\n",
+        "  "
+      ],
+      "execution_count": 64,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7sKZSVFUVZu9",
+        "outputId": "25d27d7f-2398-40ff-8275-28fd849e856c"
+      },
+      "source": [
+        "vector_1 = Vector()\r\n",
+        "#print(vector_1.vector)\r\n",
+        "#print(vector_1.size)\r\n",
+        "#vector_1.scalar_multiplication(2)\r\n",
+        "print(vector_1.vector)\r\n",
+        "\r\n",
+        "print(\"----add------\")\r\n",
+        "u=Vector(3)\r\n",
+        "w=Vector(6)\r\n",
+        "w.vector_generate()\r\n",
+        "u.vector_from_list([1,2,4,6,8,11])\r\n",
+        "v=u+w\r\n"
+      ],
+      "execution_count": 68,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[0, 0, 0]\n",
+            "----add------\n",
+            "[1, 2, 4, 6, 8, 11] [45, 15, 83, 50, 64, 66]\n",
+            "[46, 0, 0, 0, 0, 0]\n",
+            "[46, 17, 0, 0, 0, 0]\n",
+            "[46, 17, 87, 0, 0, 0]\n",
+            "[46, 17, 87, 56, 0, 0]\n",
+            "[46, 17, 87, 56, 72, 0]\n",
+            "[46, 17, 87, 56, 72, 77]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7Np3QsD_n8d3"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
